@@ -3,20 +3,23 @@ import Link from "next/link";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Typewriter from "@components/Typewriter";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const [providers, setProviders] = useState(null);
-  const { data: session } = useSession();
 
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
-
       setProviders(response);
     };
 
     setUpProviders();
   }, []);
+
+  const handleSignIn = async (providerId) => {
+    await signIn(providerId, { callbackUrl: "/profilepage" });
+  };
 
   return (
     <section className="flex items-center justify-center h-screen">
@@ -37,18 +40,21 @@ const Home = () => {
           <div className="flex space-x-4 mt-4">
             {providers &&
               Object.values(providers).map((provider) => (
-                <Link key={provider.name} href="/profilepage">
+                <div key={provider.name}>
                   <button
                     type="button"
-                    key={provider.name}
-                    onClick={() => signIn(provider.id)}
+                    onClick={() => handleSignIn(provider.id)}
                     className="button"
                   >
                     SIGN IN
                   </button>
-                </Link>
+                </div>
               ))}
-            <button className="button opacity-transition">Register</button>
+            <Link href="/register">
+              <div>
+                <button className="button opacity-transition">Register</button>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

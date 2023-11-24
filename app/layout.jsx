@@ -1,5 +1,5 @@
 import "@styles/globals.css";
-import ConditionalNav from "@components/ConditionalNav";
+import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
 export const metadata = {
@@ -14,7 +14,7 @@ const RootLayout = ({ children }) => {
       <body>
         <Provider>
           <div className="bg-gradient min-h-screen">
-            <ConditionalNav />
+            <Nav />
             <main className="app">{children}</main>
           </div>
         </Provider>

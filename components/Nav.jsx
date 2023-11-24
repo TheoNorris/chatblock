@@ -36,7 +36,7 @@ const Nav = () => {
           className="object-contain mx-auto"
         />
       </Link>
-
+      <h1 className="text-gray-500 text-4xl text-left">CHATBLOCK</h1>
       {isMobile ? (
         session?.user ? (
           <div className="flex inline-block">
@@ -46,7 +46,6 @@ const Nav = () => {
               className="w-8 h-8 rounded-full object-cover"
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
-
             {toggleDropdown && (
               <div className="dropdown-container">
                 <Link
