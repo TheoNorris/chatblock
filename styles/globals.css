@@ -52,6 +52,11 @@ body {
   letter-spacing: 1px;
 }
 
+.social-button {
+  box-shadow: #c5c4c4 1px 2px;
+  border-radius: 0.375rem;
+}
+
 .button:hover {
   background-color: #57a855;
 }
@@ -71,6 +76,12 @@ body {
 
 .button-clean:hover {
   background-color: #44444422;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .dropdown-container {

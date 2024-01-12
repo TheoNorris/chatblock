@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 const Home = () => {
   const [providers, setProviders] = useState(null);
+  const [loginDropdown, setLoginDropdown] = useState(false);
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -38,18 +39,45 @@ const Home = () => {
           <Typewriter />
 
           <div className="flex space-x-4 mt-4">
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <div key={provider.name}>
-                  <button
-                    type="button"
-                    onClick={() => handleSignIn(provider.id)}
-                    className="button"
-                  >
-                    SIGN IN
-                  </button>
+            <div className="login-div">
+              <button
+                onClick={() => setLoginDropdown((prev) => !prev)}
+                className="button opacity-transition"
+              >
+                LOGIN
+              </button>
+              {loginDropdown && (
+                <div>
+                  {providers &&
+                    Object.values(providers).map((provider) => (
+                      <div key={provider.name}>
+                        <button
+                          type="button"
+                          onClick={() => handleSignIn(provider.id)}
+                          className="social-button"
+                        >
+                          {provider.id === "google" && (
+                            <img
+                              src="/assets/images/gmail.png"
+                              alt="Google Logo"
+                              width={50}
+                              height={50}
+                            />
+                          )}
+                          {provider.id === "facebook" && (
+                            <img
+                              src="/assets/images/facebook.png"
+                              alt="Facebook Logo"
+                              width={50}
+                              height={50}
+                            />
+                          )}
+                        </button>
+                      </div>
+                    ))}
                 </div>
-              ))}
+              )}
+            </div>
             <Link href="/register">
               <div>
                 <button className="button opacity-transition">REGISTER</button>
