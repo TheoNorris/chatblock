@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "next build && next export && rm -rf __next"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -16,6 +17,7 @@
     "mongoose": "^8.0.1",
     "next": "14.0.2",
     "next-auth": "^4.24.5",
+    "nodemailer": "^6.9.8",
     "react": "^18",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18",

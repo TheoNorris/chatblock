@@ -52,7 +52,7 @@ const Home = () => {
               ))}
             <Link href="/register">
               <div>
-                <button className="button opacity-transition">Register</button>
+                <button className="button opacity-transition">REGISTER</button>
               </div>
             </Link>
           </div>
