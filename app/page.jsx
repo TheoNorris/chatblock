@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 const Home = () => {
   const [providers, setProviders] = useState(null);
   const [loginDropdown, setLoginDropdown] = useState(false);
+  const router = useRouter();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -21,6 +23,10 @@ const Home = () => {
   const handleSignIn = async (providerId) => {
     await signIn(providerId, { callbackUrl: "/profilepage" });
   };
+
+  if (session && session.user) {
+    router.push("/profilepage");
+  }
 
   return (
     <section className="flex items-center justify-center h-screen">
@@ -47,7 +53,7 @@ const Home = () => {
                 LOGIN
               </button>
               {loginDropdown && (
-                <div>
+                <div className="providers-div">
                   {providers &&
                     Object.values(providers).map((provider) => (
                       <div key={provider.name}>

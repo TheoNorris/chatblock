@@ -1,5 +1,6 @@
 "use client";
 
+import Nav from "@components/Nav";
 import Comment from "@components/Comment";
 
 import { useState, useEffect } from "react";
@@ -27,14 +28,17 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <section>
-      <div className="profile-container flex">
-        <div className="w-full lg:w-1/2">
-          <CommentCardList data={posts} handleTagClick={() => {}} />
+    <>
+      <Nav />
+      <section>
+        <div className="profile-container flex">
+          <div className="w-full lg:w-1/2">
+            <CommentCardList data={posts} handleTagClick={() => {}} />
+          </div>
+          <div className="w-full lg:w-1/2"></div>
         </div>
-        <div className="w-full lg:w-1/2"></div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
