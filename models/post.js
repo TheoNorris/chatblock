@@ -18,7 +18,7 @@ const PostSchema = new Schema({
     required: [true, "Post is required"],
   },
   likes: {
-    type: Number,
+    type: String,
   },
   comments: {
     type: Array,

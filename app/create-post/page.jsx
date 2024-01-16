@@ -27,7 +27,7 @@ const CreatePost = () => {
           time: new Date(),
           subject: post.subject,
           newPost: post.newPost,
-          likes: 0,
+          likes: "",
           comments: [],
         }),
       });
